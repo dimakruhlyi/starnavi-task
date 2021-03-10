@@ -1,20 +1,20 @@
-import {GET_MODES, MODES_ERROR} from '../types'
+import * as TYPES from '../types'
 import axios from 'axios'
 
 export const getModes = () => async dispatch => {
-    
+    dispatch({ type: TYPES.FETCH_MODES_REQUEST });
     try{
-        const res = await axios.get(`http://demo1030918.mockable.io/`)
+        const res = await axios.get(`http://demo1030918.mockable.io/`);
+        const {data} = res;
         dispatch( {
-            type: GET_MODES,
-            payload: res.data
+            type: TYPES.FETCH_MODES_SUCCESS,
+            payload: data
         })
     }
     catch(error){
         dispatch( {
-            type: MODES_ERROR,
+            type: TYPES.FETCH_MODES_ERROR,
             payload: error,
         })
     }
-
 }

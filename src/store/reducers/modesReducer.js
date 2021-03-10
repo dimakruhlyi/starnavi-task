@@ -1,25 +1,31 @@
-import {GET_MODES, MODES_ERROR} from '../types'
+import * as TYPES from '../types'
 
 const initialState = {
-    modes:{},
-    loading: true
+    modes: null,
+    loading: false,
+    error: null
 }
 
 export const modesReducer = (state = initialState, action) =>{
 
     switch(action.type){
-        case GET_MODES:
+        case TYPES.FETCH_MODES_REQUEST:
         return {
             ...state,
-            modes: action.payload,
-            loading: false
+            loading: true
         }
-        case MODES_ERROR:
+        case TYPES.FETCH_MODES_SUCCESS:
+            return {
+                ...state,
+                modes: action.payload,
+                loading: false
+            }
+        case TYPES.FETCH_MODES_ERROR:
             return {
                 loading: false,
-                error: action.payload 
+                error: action.payload,
+                modes: null 
             }
         default: return state
     }
-
 }
