@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.boxContainer{
+    display: flex;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem;
+  min-width: calc(3rem * 6);
+}
+
+.chooseBar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 2rem;
+}
+
+.historyBlock {
+  max-width: 150px;
+  width: 100%;
+  text-align: center;
+}
